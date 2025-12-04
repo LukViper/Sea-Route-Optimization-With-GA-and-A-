@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Sea-Route-Optimization-With-GA-and-A-
 =======
 # 🌊 Shipping Route Optimization using Genetic Algorithm (GA) & A* Search
@@ -70,3 +70,4 @@ python main.py
 Optimization of Sea Routes Using Genetic Algorithm and A\* Algorithm for getting Multiport feaseable path.
 <br>
 Auhor : Shasank Dahal
+
