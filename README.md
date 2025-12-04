@@ -65,9 +65,9 @@ python main.py
 - Shasank Dahal
 
 
->>>>>>> eae6073c65a51031ef727fb7956c022b4313ef26
 
 Optimization of Sea Routes Using Genetic Algorithm and A\* Algorithm for getting Multiport feaseable path.
 <br>
 Auhor : Shasank Dahal
+
 
