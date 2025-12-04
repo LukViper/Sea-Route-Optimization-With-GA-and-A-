@@ -61,5 +61,5 @@ python main.py
 ## 🙌 Contributors
 - Shasank Dahal
 
-## 📜 License
-MIT License
+
+
