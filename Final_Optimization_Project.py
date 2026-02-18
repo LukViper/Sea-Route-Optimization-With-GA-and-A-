@@ -17,11 +17,11 @@ from functools import lru_cache
 # -----------------------------
 # Configuration / Constants
 # -----------------------------
-SEA_LANES_GEOJSON_PATH = r"C:\3rd sem\OT project\New folder\newzealandpaul-Shipping-Lanes-b0ad85c\data\Shipping_Lanes_v1.geojson"
-OUTPUT_MAP_FILE = r"C:\3rd sem\OT project\New folder\optimized_route_map.html"
+SEA_LANES_GEOJSON_PATH = r"/home/luk-viper/Shipping_Lanes_v1.geojson"
+OUTPUT_MAP_FILE = r"/home/luk-viper/optimized_route_map.html"
 
 PORT_LOCATIONS = {}
-CSV_Location = r"C:\3rd sem\OT project\New folder\ports.csv"
+CSV_Location = r"/home/luk-viper/ports.csv"
 def load_ports_from_csv(path):
     ports ={}
     with open(path,'r',encoding="utf-8") as f :
@@ -607,4 +607,5 @@ with open(save_fn, "wb") as f:
 
 
 print("\n🎉 Done! Map should now open in your browser.")
+
 
