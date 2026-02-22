@@ -17,11 +17,11 @@ from functools import lru_cache
 # -----------------------------
 # Configuration / Constants
 # -----------------------------
-SEA_LANES_GEOJSON_PATH = r"/home/luk-viper/Shipping_Lanes_v1.geojson"
-OUTPUT_MAP_FILE = r"/home/luk-viper/optimized_route_map.html"
+SEA_LANES_GEOJSON_PATH = r"/home/luk-viper/temp/Sea-Route-Optimization-With-GA-and-A-/Shipping_Lanes_v1.geojson"
+OUTPUT_MAP_FILE = r"/home/luk-viper/temp/Sea-Route-Optimization-With-GA-and-A-/optimized_route_map.html"
 
 PORT_LOCATIONS = {}
-CSV_Location = r"/home/luk-viper/ports.csv"
+CSV_Location = r"/home/luk-viper/temp/Sea-Route-Optimization-With-GA-and-A-/ports.csv"
 def load_ports_from_csv(path):
     ports ={}
     with open(path,'r',encoding="utf-8") as f :
@@ -39,7 +39,7 @@ FUEL_CONSUMPTION_PER_KM = 0.04
 WEATHER_FACTOR = 1.25
 GA_POPULATION_SIZE = 40
 GA_GENERATIONS = 100
-PORT_CONNECTION_THRESHOLD_KM = 300 # can change for sea-lane data coverage but 500 is realistic due to the dataset we are using
+PORT_CONNECTION_THRESHOLD_KM = 500 # can change for sea-lane data coverage but 500 is realistic due to the dataset we are using
 
 # Helpers
 
@@ -231,12 +231,20 @@ log_status("Precompute done.", "✅")
 
 # Genetic Algorithm 
 def total_distance(port_sequence):
-    """Sum of distances along a port sequence using precomputed port-to-port paths."""
+    if port_sequence is None:
+        print("🚨 port_sequence is None!")
+        return float("inf")
+
     dist = 0.0
     for i in range(len(port_sequence) - 1):
-        _, d = port_paths.get((port_sequence[i], port_sequence[i + 1]), (None, float("inf")))
+        path, d = port_paths.get((port_sequence[i], port_sequence[i + 1]), (None, float("inf")))
+
+        if d == float("inf"):
+            print(f"❌ No path: {port_sequence[i]} → {port_sequence[i+1]}")
+
         dist += d
     return dist
+
 
 
 def fitness(route_seq, goal):
